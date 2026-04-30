@@ -9,13 +9,13 @@ using static Unity.Burst.Intrinsics.X86;
 
 public class ZombieAI : MonoBehaviour
 {
-   
+
     private NavMeshAgent agent;
     private Animator anim;
     private Transform player;
 
-    [Header("Configurações de Ataque")]
-    [SerializeField] private float attackRange = 2f;
+    [Header("Configurações")]
+    [SerializeField] private float attackRange = 2.2f; // Ajuste conforme o tamanho do braço do modelo
     [SerializeField] private float attackCooldown = 1.5f;
     private float nextAttackTime;
 
@@ -24,6 +24,7 @@ public class ZombieAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
+        // Encontra o player pela Tag (certifique-se que seu Player tem a tag "Player")
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
     }
@@ -36,17 +37,16 @@ public class ZombieAI : MonoBehaviour
 
         if (distance > attackRange)
         {
-            // MODO PERSEGUIÇÃO
+            // --- ESTADO: PERSEGUIR ---
             agent.isStopped = false;
             agent.SetDestination(player.position);
 
-            // Ativa animação de andar e desativa ataque
             anim.SetBool("IsWalking", true);
         }
-        else
+        else if (distance <= attackRange)
         {
-            // MODO ATAQUE
-            agent.isStopped = true; // Para de andar para atacar
+            // --- ESTADO: ATACAR ---
+            agent.isStopped = true;
             anim.SetBool("IsWalking", false);
 
             if (Time.time >= nextAttackTime)
@@ -59,13 +59,13 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        // Dispara a animação de ataque
-        // Se no Animator for Trigger, use SetTrigger. Se for Bool, use SetBool.
+        // Usa o nome EXATO que está na sua imagem
         anim.SetTrigger("IsAtack");
 
-        Debug.Log("Zumbi atacou!");
+        // Gira para o player não fugir do foco durante o golpe
+        Vector3 lookPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(lookPos);
 
-        // Faz o zumbi encarar o player no ataque
-        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        Debug.Log("Zumbi desferiu um golpe!");
     }
 }
