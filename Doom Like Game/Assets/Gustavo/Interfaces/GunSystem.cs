@@ -101,6 +101,7 @@ public class GunSystem : MonoBehaviour
 
         _handGun = _gunInventory.Guns[currentIndex];
         ChangeGunVisual();
+
     }
 
     IEnumerator Reload()
