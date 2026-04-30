@@ -14,8 +14,12 @@ public class ZombieAI : MonoBehaviour
     private Animator anim;
     private Transform player;
 
-    [Header("Configurações")]
-    [SerializeField] private float attackRange = 2.2f; // Ajuste conforme o tamanho do braço do modelo
+    [Header("Configurações de Nascimento")]
+   [SerializeField] private float spawnAnimationDuration = 3.0f; // Tempo que ele leva pra sair do chão
+    private bool isSpawning = true;
+
+    [Header("Combate")]
+    [SerializeField] private float attackRange = 2.2f;
     [SerializeField] private float attackCooldown = 1.5f;
     private float nextAttackTime;
 
@@ -24,28 +28,42 @@ public class ZombieAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
-        // Encontra o player pela Tag (certifique-se que seu Player tem a tag "Player")
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
+
+        // Inicia o processo de nascimento
+        StartCoroutine(HandleSpawn());
+    }
+
+    System.Collections.IEnumerator HandleSpawn()
+    {
+        agent.enabled = false; // Desliga o NavMesh para não bugar enquanto sobe
+        isSpawning = true;
+
+        // Toca a animação (certifique-se que o nome no Animator é exatamente este)
+        anim.Play("Spawn");
+
+        yield return new WaitForSeconds(spawnAnimationDuration);
+
+        isSpawning = false;
+        agent.enabled = true; // Liga o NavMesh para começar a perseguição
     }
 
     void Update()
     {
-        if (player == null) return;
+        // Se estiver nascendo ou se o player morreu, não faz nada
+        if (isSpawning || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance > attackRange)
         {
-            // --- ESTADO: PERSEGUIR ---
             agent.isStopped = false;
             agent.SetDestination(player.position);
-
             anim.SetBool("IsWalking", true);
         }
-        else if (distance <= attackRange)
+        else
         {
-            // --- ESTADO: ATACAR ---
             agent.isStopped = true;
             anim.SetBool("IsWalking", false);
 
@@ -59,13 +77,7 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        // Usa o nome EXATO que está na sua imagem
         anim.SetTrigger("IsAtack");
-
-        // Gira para o player não fugir do foco durante o golpe
-        Vector3 lookPos = new Vector3(player.position.x, transform.position.y, player.position.z);
-        transform.LookAt(lookPos);
-
-        Debug.Log("Zumbi desferiu um golpe!");
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
 }
