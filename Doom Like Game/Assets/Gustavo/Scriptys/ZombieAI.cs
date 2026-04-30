@@ -1,22 +1,29 @@
+using System;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
+using static Unity.Burst.Intrinsics.X86;
 
 public class ZombieAI : MonoBehaviour
 {
+   
     private NavMeshAgent agent;
+    private Animator anim;
     private Transform player;
 
-    [Header("Configurações de Combate")]
-    public float attackRange = 1.5f;
-    public float attackCooldown = 2.0f;
+    [Header("Configurações de Ataque")]
+    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackCooldown = 1.5f;
     private float nextAttackTime;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 
-        // Encontra o player uma única vez no início
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
     }
@@ -25,14 +32,23 @@ public class ZombieAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // O destino é ATUALIZADO constantemente para a posição do player
-        agent.SetDestination(player.position);
+        float distance = Vector3.Distance(transform.position, player.position);
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        // Verifica se está perto o suficiente para atacar
-        if (distanceToPlayer <= attackRange)
+        if (distance > attackRange)
         {
+            // MODO PERSEGUIÇÃO
+            agent.isStopped = false;
+            agent.SetDestination(player.position);
+
+            // Ativa animação de andar e desativa ataque
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            // MODO ATAQUE
+            agent.isStopped = true; // Para de andar para atacar
+            anim.SetBool("IsWalking", false);
+
             if (Time.time >= nextAttackTime)
             {
                 Attack();
@@ -43,16 +59,13 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        // Aqui entra o gatilho da sua animação ou dano
-        Debug.Log("Zumbi acertou o player!");
+        // Dispara a animação de ataque
+        // Se no Animator for Trigger, use SetTrigger. Se for Bool, use SetBool.
+        anim.SetTrigger("IsAtack");
 
-        // Opcional: Faz o zumbi parar brevemente ao atacar para dar chance ao player
-        // agent.isStopped = true; 
-        // Invoke("ResumeChase", 1.0f);
-    }
+        Debug.Log("Zumbi atacou!");
 
-    void ResumeChase()
-    {
-        if (agent != null) agent.isStopped = false;
+        // Faz o zumbi encarar o player no ataque
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
 }
