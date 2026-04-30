@@ -4,13 +4,14 @@ public class ZombieSpawner : MonoBehaviour
 {
     public GameObject zombiePrefab;
     public float spawnInterval = 5f;
-    public int maxZombiesFromThisSpawner = 10; // Limite por ponto de spawn
+    public int maxZombiesFromThisSpawner = 10;
 
     private int currentZombiesCreated = 0;
     private float timer;
 
     void Update()
     {
+        // Só spawna se ainda não atingiu o limite
         if (currentZombiesCreated < maxZombiesFromThisSpawner)
         {
             timer += Time.deltaTime;
@@ -25,11 +26,10 @@ public class ZombieSpawner : MonoBehaviour
 
     void Spawn()
     {
-        // Instancia o zumbi exatamente na posição do Spawner
-        Instantiate(zombiePrefab, transform.position, transform.rotation);
-        currentZombiesCreated++;
-
-        // Opcional: Adicione um efeito de partículas aqui
-        Debug.Log("Zumbi saindo do chão em: " + gameObject.name);
+        if (zombiePrefab != null)
+        {
+            Instantiate(zombiePrefab, transform.position, transform.rotation);
+            currentZombiesCreated++;
+        }
     }
 }

@@ -1,21 +1,15 @@
-using System;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.XR;
-using static Unity.Burst.Intrinsics.X86;
+using System.Collections;
 
-public class ZombieAI : MonoBehaviour
+public class MercenaryZombie : MonoBehaviour
 {
-
     private NavMeshAgent agent;
     private Animator anim;
     private Transform player;
 
     [Header("Configurações de Nascimento")]
-   [SerializeField] private float spawnAnimationDuration = 3.0f; // Tempo que ele leva pra sair do chão
+    [SerializeField] private float spawnAnimationDuration = 3.0f;
     private bool isSpawning = true;
 
     [Header("Combate")]
@@ -31,27 +25,26 @@ public class ZombieAI : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
-        // Inicia o processo de nascimento
+        // Inicia o nascimento
         StartCoroutine(HandleSpawn());
     }
 
-    System.Collections.IEnumerator HandleSpawn()
+    IEnumerator HandleSpawn()
     {
-        agent.enabled = false; // Desliga o NavMesh para não bugar enquanto sobe
         isSpawning = true;
+        if (agent != null) agent.enabled = false;
 
-        // Toca a animação (certifique-se que o nome no Animator é exatamente este)
-        anim.Play("Spawn");
+        // ATIVA O TRIGGER QUE VOCÊ VIU NA IMAGEM
+        anim.SetTrigger("Spawn");
 
         yield return new WaitForSeconds(spawnAnimationDuration);
 
         isSpawning = false;
-        agent.enabled = true; // Liga o NavMesh para começar a perseguição
+        if (agent != null) agent.enabled = true;
     }
 
     void Update()
     {
-        // Se estiver nascendo ou se o player morreu, não faz nada
         if (isSpawning || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
@@ -77,7 +70,7 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        anim.SetTrigger("IsAtack");
+        anim.SetTrigger("IsAtack"); // Nome que estava na sua imagem anterior
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
 }
