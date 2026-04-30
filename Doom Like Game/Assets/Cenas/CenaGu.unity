@@ -1332,6 +1332,100 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &952163301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_Name
+      value: Base mesh MonsterMutant7 skin2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5922
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5922
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5922
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.034
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.971
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.919
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568573959264, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290884568580928384, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Character1_LeftShoulder'\n\tTransform 'Character1_RightShoulder'\n\tTransform
+        'Character1_LeftLeg'\n\tTransform 'Character1_Head'\n\tTransform 'Character1_Neck'\n\tTransform
+        'Character1_RightLeg'\n\tTransform 'Character1_Hips'\n\tTransform 'Character1_LeftForeArm'\n\tTransform
+        'Character1_Spine2'\n\tTransform 'Character1_RightForeArm'\n\tand more ...\n\tFrom
+        animation clip 'run3'\n\tFrom animation clip 'attack1LSpike'"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770425603}
+    - targetCorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770425602}
+    - targetCorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770425608}
+    - targetCorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770425607}
+    - targetCorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770425606}
+  m_SourcePrefab: {fileID: 100100000, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
 --- !u!1 &960278662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,8 +2162,8 @@ MonoBehaviour:
   killText: {fileID: 1514935068}
   killsToSpawnBoss: 25
   currentKills: 0
-  bossPrefab: {fileID: 0}
-  bossSpawnPoint: {fileID: 0}
+  bossPrefab: {fileID: 1770425601}
+  bossSpawnPoint: {fileID: 1230212289}
 --- !u!4 &1230212289
 Transform:
   m_ObjectHideFlags: 0
@@ -2312,8 +2406,99 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0664433, y: 1.800312, z: 0.36334634}
-  m_Center: {x: -0.033221655, y: 0.83471596, z: -0.011690201}
+  m_Size: {x: 1.0664433, y: 1.7144117, z: 0.36334634}
+  m_Center: {x: -0.033221655, y: 0.87766623, z: -0.011690196}
+--- !u!1 &1770425601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 290884568573657152, guid: 6ec18304030011c47aaa07296ea319e0, type: 3}
+  m_PrefabInstance: {fileID: 952163301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1770425602
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770425601}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 15
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!65 &1770425603
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770425601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.9849746, z: 1}
+  m_Center: {x: 0, y: 0.98062986, z: 0}
+--- !u!114 &1770425606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770425601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0eccdf8eac0ad4bb25f7b45d1e893a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieMovement
+  player: {fileID: 138960546}
+--- !u!114 &1770425607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770425601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d7d087197f9a94b81b86931da698b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossZombieAI
+  spawnAnimationDuration: 3
+  attackRange: 2.2
+  attackCooldown: 1.5
+--- !u!114 &1770425608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770425601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5459355a2ec32f149a002f6945f63343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
+  isDead: 0
+  _bloodEffect: {fileID: 4057698328083665647, guid: fa5b9097438ebbb44bbd596fe7dd4fbe, type: 3}
+  _lifeMax: 2
 --- !u!1 &2078662847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,3 +2699,4 @@ SceneRoots:
   - {fileID: 34513051}
   - {fileID: 244889944}
   - {fileID: 1230212289}
+  - {fileID: 952163301}

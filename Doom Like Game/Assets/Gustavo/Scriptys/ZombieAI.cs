@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class MercenaryZombie : MonoBehaviour
+public class ZombieAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator anim;
