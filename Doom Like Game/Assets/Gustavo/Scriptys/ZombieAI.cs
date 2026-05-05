@@ -14,18 +14,18 @@ public class ZombieAI : MonoBehaviour
 
     [Header("Combate")]
     [SerializeField] private float attackRange = 2.2f;
-    [SerializeField] private float attackCooldown = 1.5f;
-    private float nextAttackTime;
+    [SerializeField] private float hitDetectionRange = 2.5f;
+    [SerializeField] private float recoverTimeHit = 1.0f;
+    [SerializeField] private float recoverTimeMiss = 2.5f;
+
+    private bool isRecovering = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
-
-        // Inicia o nascimento
         StartCoroutine(HandleSpawn());
     }
 
@@ -33,19 +33,15 @@ public class ZombieAI : MonoBehaviour
     {
         isSpawning = true;
         if (agent != null) agent.enabled = false;
-
-        // ATIVA O TRIGGER QUE VOCÊ VIU NA IMAGEM
         anim.SetTrigger("Spawn");
-
         yield return new WaitForSeconds(spawnAnimationDuration);
-
         isSpawning = false;
         if (agent != null) agent.enabled = true;
     }
 
     void Update()
     {
-        if (isSpawning || player == null) return;
+        if (isSpawning || isRecovering || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -59,18 +55,44 @@ public class ZombieAI : MonoBehaviour
         {
             agent.isStopped = true;
             anim.SetBool("IsWalking", false);
-
-            if (Time.time >= nextAttackTime)
-            {
-                Attack();
-                nextAttackTime = Time.time + attackCooldown;
-            }
+            StartCoroutine(AttackRoutine());
         }
     }
 
-    void Attack()
+    IEnumerator AttackRoutine()
     {
-        anim.SetTrigger("IsAtack"); // Nome que estava na sua imagem anterior
+        isRecovering = true;
+        agent.isStopped = true;
+
+        anim.SetTrigger("IsAtack");
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+
+        yield return new WaitForSeconds(0.6f);
+
+        if (CheckHit())
+        {
+            yield return new WaitForSeconds(recoverTimeHit);
+        }
+        else
+        {
+            // ATIVA ANIMAÇÃO DE RECUPERAÇÃO/STUN
+            anim.SetBool("IsStun", true);
+            yield return new WaitForSeconds(recoverTimeMiss);
+            anim.SetBool("IsStun", false);
+        }
+
+        isRecovering = false;
+        if (agent.enabled) agent.isStopped = false;
+    }
+
+    bool CheckHit()
+    {
+        RaycastHit hit;
+        Vector3 origin = transform.position + Vector3.up;
+        if (Physics.Raycast(origin, transform.forward, out hit, hitDetectionRange))
+        {
+            if (hit.collider.CompareTag("Player")) return true;
+        }
+        return false;
     }
 }

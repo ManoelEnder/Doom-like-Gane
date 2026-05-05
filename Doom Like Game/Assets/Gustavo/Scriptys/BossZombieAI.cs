@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 using System.Collections;
 
 public class BossZombieAI : MonoBehaviour
@@ -14,19 +13,19 @@ public class BossZombieAI : MonoBehaviour
     private bool isSpawning = true;
 
     [Header("Combate")]
-    [SerializeField] private float attackRange = 2.2f;
-    [SerializeField] private float attackCooldown = 1.5f;
-    private float nextAttackTime;
+    [SerializeField] private float attackRange = 2.8f;
+    [SerializeField] private float hitDetectionRange = 3.2f;
+    [SerializeField] private float recoverTimeHit = 0.8f;
+    [SerializeField] private float recoverTimeMiss = 3.5f; // Punição maior para o Boss
+
+    private bool isRecovering = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
-
-        // Inicia o nascimento
         StartCoroutine(HandleSpawn());
     }
 
@@ -34,19 +33,15 @@ public class BossZombieAI : MonoBehaviour
     {
         isSpawning = true;
         if (agent != null) agent.enabled = false;
-
-        // ATIVA O TRIGGER QUE VOCÊ VIU NA IMAGEM
         anim.SetTrigger("Spawn");
-
         yield return new WaitForSeconds(spawnAnimationDuration);
-
         isSpawning = false;
         if (agent != null) agent.enabled = true;
     }
 
     void Update()
     {
-        if (isSpawning || player == null) return;
+        if (isSpawning || isRecovering || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -60,18 +55,44 @@ public class BossZombieAI : MonoBehaviour
         {
             agent.isStopped = true;
             anim.SetBool("IsWalking", false);
-
-            if (Time.time >= nextAttackTime)
-            {
-                Attack();
-                nextAttackTime = Time.time + attackCooldown;
-            }
+            StartCoroutine(BossAttackRoutine());
         }
     }
 
-    void Attack()
+    IEnumerator BossAttackRoutine()
     {
-        anim.SetTrigger("IsAtack"); // Nome que estava na sua imagem anterior
+        isRecovering = true;
+        agent.isStopped = true;
+
+        anim.SetTrigger("IsAtack");
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+
+        yield return new WaitForSeconds(0.7f);
+
+        if (CheckBossHit())
+        {
+            yield return new WaitForSeconds(recoverTimeHit);
+        }
+        else
+        {
+            // BOSS FICA TONTO/RECUPERANDO
+            anim.SetBool("IsStun", true);
+            yield return new WaitForSeconds(recoverTimeMiss);
+            anim.SetBool("IsStun", false);
+        }
+
+        isRecovering = false;
+        if (agent.enabled) agent.isStopped = false;
+    }
+
+    bool CheckBossHit()
+    {
+        RaycastHit hit;
+        Vector3 origin = transform.position + Vector3.up * 1.2f;
+        if (Physics.Raycast(origin, transform.forward, out hit, hitDetectionRange))
+        {
+            if (hit.collider.CompareTag("Player")) return true;
+        }
+        return false;
     }
 }

@@ -115,7 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   spawnAnimationDuration: 3
   attackRange: 1.5
-  attackCooldown: 2
+  hitDetectionRange: 1.5
+  recoverTimeHit: 1
+  recoverTimeMiss: 2.5
 --- !u!195 &2853743882910523757
 NavMeshAgent:
   m_ObjectHideFlags: 0
