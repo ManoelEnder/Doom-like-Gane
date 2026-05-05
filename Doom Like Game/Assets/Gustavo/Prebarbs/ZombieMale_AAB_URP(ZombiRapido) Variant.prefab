@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieMale_AAB_URP(ZombiRapido) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3547707238052702253, guid: 6f8e61bcfda026941b9194b1e2dcb048, type: 3}
+      propertyPath: m_TagString
+      value: Zombie
+      objectReference: {fileID: 0}
     - target: {fileID: 4210914318428336791, guid: 6f8e61bcfda026941b9194b1e2dcb048, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0619
