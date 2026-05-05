@@ -71,7 +71,7 @@ public class ZombieAI : MonoBehaviour
 
         if (CheckHit())
         {
-            yield return new WaitForSeconds(recoverTimeHit);
+            yield return new WaitForSeconds(recoverTimeHit); //
         }
         else
         {

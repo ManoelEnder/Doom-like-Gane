@@ -16,7 +16,7 @@ public class BossZombieAI : MonoBehaviour
     [SerializeField] private float attackRange = 2.8f;
     [SerializeField] private float hitDetectionRange = 3.2f;
     [SerializeField] private float recoverTimeHit = 0.8f;
-    [SerializeField] private float recoverTimeMiss = 3.5f; // Punição maior para o Boss
+    [SerializeField] private float recoverTimeMiss = 3.5f; // Punição maior para o Boss //
 
     private bool isRecovering = false;
 
