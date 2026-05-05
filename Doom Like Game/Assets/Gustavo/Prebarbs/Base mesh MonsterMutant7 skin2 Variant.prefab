@@ -164,10 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossZombieAI
   spawnAnimationDuration: 3
-  attackRange: 3
-  hitDetectionRange: 2.8
-  recoverTimeHit: 0.8
-  recoverTimeMiss: 2
+  attackRange: 2.2
+  attackCooldown: 1.5
 --- !u!114 &4811486471536519809
 MonoBehaviour:
   m_ObjectHideFlags: 0
