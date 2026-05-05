@@ -1,21 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    public GameObject zombiePrefab;
-    public float spawnInterval = 5f;
-    public int maxZombiesFromThisSpawner = 10;
+    [Header("Lista de Variações")]
+    [SerializeField] private List<GameObject> zombiePrefabs; // Arraste todas as versões do boss/zumbi para cá
+
+    [SerializeField] private float spawnInterval = 5f;
+    [SerializeField] private int maxZombiesFromThisSpawner = 10;
 
     private int currentZombiesCreated = 0;
     private float timer;
 
     void Update()
     {
-        // Só spawna se ainda não atingiu o limite
         if (currentZombiesCreated < maxZombiesFromThisSpawner)
         {
             timer += Time.deltaTime;
-
             if (timer >= spawnInterval)
             {
                 Spawn();
@@ -26,9 +27,14 @@ public class ZombieSpawner : MonoBehaviour
 
     void Spawn()
     {
-        if (zombiePrefab != null)
+        if (zombiePrefabs.Count > 0)
         {
-            Instantiate(zombiePrefab, transform.position, transform.rotation);
+            // Escolhe um índice aleatório da lista
+            int randomIndex = Random.Range(0, zombiePrefabs.Count);
+
+            // Instancia a variação escolhida
+            Instantiate(zombiePrefabs[randomIndex], transform.position, transform.rotation);
+
             currentZombiesCreated++;
         }
     }
