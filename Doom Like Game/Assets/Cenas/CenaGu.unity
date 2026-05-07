@@ -3289,7 +3289,7 @@ MonoBehaviour:
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
   - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   spawnInterval: 10
-  maxZombiesFromThisSpawner: 4
+  maxZombiesFromThisSpawner: 30
 --- !u!4 &244889944
 Transform:
   m_ObjectHideFlags: 0
@@ -3358,7 +3358,7 @@ MonoBehaviour:
   - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
   spawnInterval: 10
-  maxZombiesFromThisSpawner: 2
+  maxZombiesFromThisSpawner: 30
 --- !u!135 &250642817
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4170,8 +4170,8 @@ MonoBehaviour:
   zombiePrefabs:
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
   - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
-  spawnInterval: 50
-  maxZombiesFromThisSpawner: 2
+  spawnInterval: 10
+  maxZombiesFromThisSpawner: 30
 --- !u!135 &328423788
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11344,7 +11344,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.315
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13364,8 +13364,8 @@ MonoBehaviour:
   zombiePrefabs:
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
   - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
-  spawnInterval: 75
-  maxZombiesFromThisSpawner: 2
+  spawnInterval: 10
+  maxZombiesFromThisSpawner: 30
 --- !u!135 &1150529876
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13546,8 +13546,8 @@ MonoBehaviour:
   zombiePrefabs:
   - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
-  spawnInterval: 25
-  maxZombiesFromThisSpawner: 2
+  spawnInterval: 10
+  maxZombiesFromThisSpawner: 30
 --- !u!135 &1164563087
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14396,8 +14396,8 @@ MonoBehaviour:
   killText: {fileID: 1514935068}
   winPanel: {fileID: 689816662}
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  resumeSpawnAt: 5
+  maxEnemiesAllowed: 30
+  resumeSpawnAt: 29
   killsToSpawnBoss: 20
   currentKills: 0
   bossPrefabs:
