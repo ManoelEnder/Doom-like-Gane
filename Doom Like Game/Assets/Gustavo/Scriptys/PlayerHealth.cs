@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Configurações de Vida")]
-    public float maxHealth = 100f;
-    public float currentHealth;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float currentHealth;
 
     [Header("Interface")]
-    public Slider healthSlider;
-    public GameObject gameOverPanel; // Arraste um painel de Game Over aqui
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private GameObject gameOverPanel; // Arraste um painel de Game Over aqui
+
+    [Header("Áudio")]
+    [SerializeField] private AudioSource musicSource;
 
     private bool isDead = false;
 
@@ -18,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateUI();
+
+        if (musicSource == null) musicSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(float amount)
@@ -48,6 +53,11 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Player morreu!");
+
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+        }
 
         // Ativa a tela de Game Over
         if (gameOverPanel != null)
