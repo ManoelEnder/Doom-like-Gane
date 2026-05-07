@@ -16,7 +16,8 @@ public class BossZombieAI : MonoBehaviour
     [SerializeField] private float attackRange = 2.8f;
     [SerializeField] private float hitDetectionRange = 3.2f;
     [SerializeField] private float recoverTimeHit = 0.8f;
-    [SerializeField] private float recoverTimeMiss = 3.5f; // Punição maior para o Boss //
+    [SerializeField] private float recoverTimeMiss = 3.5f;
+    [SerializeField] private float damageDealt = 30f; // Boss tira muito mais vida!
 
     private bool isRecovering = false;
 
@@ -71,11 +72,14 @@ public class BossZombieAI : MonoBehaviour
 
         if (CheckBossHit())
         {
+            // --- AQUI APLICA O DANO ---
+            PlayerHealth ph = player.GetComponent<PlayerHealth>();
+            if (ph != null) ph.TakeDamage(damageDealt);
+
             yield return new WaitForSeconds(recoverTimeHit);
         }
         else
         {
-            // BOSS FICA TONTO/RECUPERANDO
             anim.SetBool("IsStun", true);
             yield return new WaitForSeconds(recoverTimeMiss);
             anim.SetBool("IsStun", false);

@@ -118,6 +118,7 @@ MonoBehaviour:
   hitDetectionRange: 2.5
   recoverTimeHit: 1
   recoverTimeMiss: 2.5
+  damageDealt: 10
 --- !u!195 &2853743882910523757
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   isDead: 0
   _bloodEffect: {fileID: 4057698328083665647, guid: fa5b9097438ebbb44bbd596fe7dd4fbe, type: 3}
-  _lifeMax: 1
+  _lifeMax: 2
 --- !u!65 &7417088449609200280
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class ZombieAI : MonoBehaviour
     [SerializeField] private float hitDetectionRange = 2.5f;
     [SerializeField] private float recoverTimeHit = 1.0f;
     [SerializeField] private float recoverTimeMiss = 2.5f;
+    [SerializeField] private float damageDealt = 10f; // Dano do zumbi normal
 
     private bool isRecovering = false;
 
@@ -67,15 +68,18 @@ public class ZombieAI : MonoBehaviour
         anim.SetTrigger("IsAtack");
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.6f); // Momento do impacto
 
         if (CheckHit())
         {
-            yield return new WaitForSeconds(recoverTimeHit); //
+            // --- AQUI APLICA O DANO ---
+            PlayerHealth ph = player.GetComponent<PlayerHealth>();
+            if (ph != null) ph.TakeDamage(damageDealt);
+
+            yield return new WaitForSeconds(recoverTimeHit);
         }
         else
         {
-            // ATIVA ANIMAÇÃO DE RECUPERAÇÃO/STUN
             anim.SetBool("IsStun", true);
             yield return new WaitForSeconds(recoverTimeMiss);
             anim.SetBool("IsStun", false);

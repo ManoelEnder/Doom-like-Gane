@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthSlider != null)
         {
-            healthSlider.value = currentHealth;
+            healthSlider.value = currentHealth/maxHealth;
         }
     }
 
