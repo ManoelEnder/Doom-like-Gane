@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Importante para controlar o texto
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,38 +7,38 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI killText;
+    [SerializeField] private GameObject winPanel; // Arraste o WinPanel aqui
 
-    [Header("Configurações de Progresso")]
+    [Header("Controle de Horda")]
+    public int enemiesAlive = 0;
+    public int maxEnemiesAllowed = 10;
+    public int resumeSpawnAt = 5;
+    private bool isPausedByLimit = false;
+
+    [Header("Progresso")]
     [SerializeField] private int killsToSpawnBoss = 10;
     [SerializeField] private int currentKills = 0;
+    private bool bossSpawned = false;
+    private bool gameWon = false;
 
     [Header("Boss")]
-    // Mudamos para uma Array para aceitar várias opções de Boss
     [SerializeField] private GameObject[] bossPrefabs;
     [SerializeField] private Transform bossSpawnPoint;
-    private bool bossSpawned = false;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void Start()
-    {
-        UpdateUI();
-    }
+    void Awake() { Instance = this; }
 
     public void AddKill()
     {
+        if (gameWon) return;
+
         currentKills++;
+        enemiesAlive--;
         UpdateUI();
+
+        if (isPausedByLimit && enemiesAlive <= resumeSpawnAt)
+        {
+            isPausedByLimit = false;
+        }
 
         if (currentKills >= killsToSpawnBoss && !bossSpawned)
         {
@@ -46,34 +46,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // NOVA FUNÇÃO: Chamada quando o Boss morre
+    public void BossDefeated()
+    {
+        gameWon = true;
+        if (winPanel != null) winPanel.SetActive(true);
+
+        // Para o jogo e libera o mouse
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public bool CanSpawn()
+    {
+        if (bossSpawned || gameWon) return false; // Para de spawnar zumbis quando o boss chega ou ganha
+        if (enemiesAlive >= maxEnemiesAllowed || isPausedByLimit)
+        {
+            isPausedByLimit = true;
+            return false;
+        }
+        return true;
+    }
+
+    public void RegisterSpawn() { enemiesAlive++; }
+
     void UpdateUI()
     {
         if (killText != null)
-        {
             killText.text = "KILLS: " + currentKills + " / " + killsToSpawnBoss;
-        }
     }
 
     void SpawnBoss()
     {
         bossSpawned = true;
+        if (killText != null) killText.text = "DERROTE O BOSS!";
 
-        if (killText != null) killText.text = "O BOSS CHEGOU!";
-
-        // Verifica se existem prefabs na lista e se tem um ponto de spawn
         if (bossPrefabs.Length > 0 && bossSpawnPoint != null)
         {
-            // Escolhe um índice aleatório entre 0 e o tamanho da lista
             int randomIndex = Random.Range(0, bossPrefabs.Length);
-
-            // Instancia o boss sorteado
+            // Criamos o Boss
             Instantiate(bossPrefabs[randomIndex], bossSpawnPoint.position, bossSpawnPoint.rotation);
-
-            Debug.Log("Boss variante " + randomIndex + " spawnado!");
-        }
-        else
-        {
-            Debug.LogError("ERRO: Liste os prefabs do Boss no GameManager!");
         }
     }
 }
