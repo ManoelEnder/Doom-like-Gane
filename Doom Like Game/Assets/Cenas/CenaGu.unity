@@ -1971,7 +1971,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
   _gunInventory:
-    _guns: []
+    _guns:
+    - OnReload:
+        m_PersistentCalls:
+          m_Calls: []
+      _gunModel: {fileID: 0}
+      _name: 
+      _damage: 0
+      _shootRate: 0
+      _ammunation: 0
+      _clipSize: 0
+      _reloadTime: 0
+      _hadScope: 0
+      _shootSound: {fileID: 0}
+      _reloadSound: {fileID: 0}
   _handGunModeParent: {fileID: 0}
   _handGun:
     OnReload:
