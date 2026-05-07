@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cenas/CenaGu.unity
     guid: fe8192ad094690b4f8ab1635cb3560ea
+  - enabled: 1
+    path: Assets/Miguel/Scenes/Forest.unity
+    guid: 55649a7194c970b4193ae639a4f08091
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
