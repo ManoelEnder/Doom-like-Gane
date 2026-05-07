@@ -31,23 +31,18 @@ public class EnemyStatus : MonoBehaviour, IShootable
 
     private void Die()
     {
-        if (isDead) return; // Evita contar duas vezes
         isDead = true;
 
-        // IMPORTANTE: Verifique se as tags batem com o que está no Unity
+        // Se for um Zumbi comum
         if (gameObject.CompareTag("Zombie"))
         {
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.AddKill();
-            }
+            GameManager.Instance.AddKill();
         }
-        else if (gameObject.CompareTag("Boss"))
+
+        // NOVO: Se for o Boss (Crie a Tag "Boss" no Unity e coloque no Prefab do Boss)
+        if (gameObject.CompareTag("Boss"))
         {
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.BossDefeated();
-            }
+            GameManager.Instance.BossDefeated();
         }
 
         Destroy(gameObject);
