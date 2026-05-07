@@ -1994,7 +1994,7 @@ MonoBehaviour:
     _name: Pistol
     _damage: 50
     _shootRate: 0.5
-    _ammunation: 25
+    _ammunation: Infinity
     _clipSize: 1
     _reloadTime: 0.1
     _hadScope: 1
@@ -14398,7 +14398,7 @@ MonoBehaviour:
   enemiesAlive: 0
   maxEnemiesAllowed: 10
   resumeSpawnAt: 5
-  killsToSpawnBoss: 50
+  killsToSpawnBoss: 20
   currentKills: 0
   bossPrefabs:
   - {fileID: 2122697329295013458, guid: f3d52ca6c9143a2409a88e35e0d7f25b, type: 3}
