@@ -154,7 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   spawnAnimationDuration: 3
   attackRange: 2.2
-  attackCooldown: 1.5
+  hitDetectionRange: 2.5
+  recoverTimeHit: 1
+  recoverTimeMiss: 2.5
+  damageDealt: 5
 --- !u!114 &7711043433635978669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,4 +185,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   isDead: 0
   _bloodEffect: {fileID: 4057698328083665647, guid: fa5b9097438ebbb44bbd596fe7dd4fbe, type: 3}
-  _lifeMax: 2
+  _lifeMax: 1
