@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: choose the phase
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
-  m_sharedMaterial: {fileID: -3831164264480308604, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -601,8 +601,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: dark forest
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
-  m_sharedMaterial: {fileID: -3831164264480308604, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -781,8 +781,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: apocalipse city
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
-  m_sharedMaterial: {fileID: -3831164264480308604, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
