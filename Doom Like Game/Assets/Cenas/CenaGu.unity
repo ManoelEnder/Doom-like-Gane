@@ -1568,6 +1568,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 302081842}
     m_Modifications:
+    - target: {fileID: 1619505362, guid: 7e7f2840eb6a6294fb9d04582dbf8079, type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a1be7afde5c54f44ea376fdba3ab193b, type: 3}
+    - target: {fileID: 1619505362, guid: 7e7f2840eb6a6294fb9d04582dbf8079, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8565972283275330997, guid: 7e7f2840eb6a6294fb9d04582dbf8079, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.37
@@ -1977,6 +1985,8 @@ MonoBehaviour:
     _clipSize: 1
     _reloadTime: 0.1
     _hadScope: 0
+    _shootSound: {fileID: 8300000, guid: a1be7afde5c54f44ea376fdba3ab193b, type: 3}
+    _reloadSound: {fileID: 0}
 --- !u!114 &138960548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3241,7 +3251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &276833039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9470,8 +9480,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+  m_Intensity: 10
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -9513,7 +9523,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 10
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -11106,7 +11116,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 007d7df855ea15147b0f4bbe65abb0aa, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.458
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18992,8 +19002,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
-  m_sharedMaterial: {fileID: -3831164264480308604, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19978,8 +19988,8 @@ MonoBehaviour:
 
     You Lose'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
-  m_sharedMaterial: {fileID: -3831164264480308604, guid: 87ba1ae02e2000242b9c84c025513c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

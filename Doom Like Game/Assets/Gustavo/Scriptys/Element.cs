@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class Element
 {
+
 }
 
 [System.Serializable]
@@ -13,17 +14,17 @@ public class GunElement : Element
     [SerializeField] private string _name;
     [SerializeField] private float _damage;
     [SerializeField] private float _shootRate;
-    [SerializeField] private float _ammunation; //Munição total
-    [SerializeField] private float _clipSize;    //Capacidade do pente
-    [SerializeField] private float _reloadTime;  //Tempo de recarga
+    [SerializeField] private float _ammunation;//Munição total da arma para referência pro jogo
+    [SerializeField] private float _clipSize;//Quantidade de balas que o pente suporta
+    [SerializeField] private float _reloadTime;//Tempo que leva para recarregar a arma
     [SerializeField] private bool _hadScope;
 
-    // --- NOVOS CAMPOS DE ÁUDIO ---
-    [Header("Sons da Arma")]
-    [SerializeField] private AudioClip _shootSound;  // Arraste o som do tiro aqui
-    [SerializeField] private AudioClip _reloadSound; // Arraste o som do reload aqui
+    // --- ADICIONADO: CAMPOS DE ÁUDIO ---
+    [SerializeField] private AudioClip _shootSound;
+    [SerializeField] private AudioClip _reloadSound;
+    // ----------------------------------
 
-    private float _ammunationClip; // Balas no pente atual
+    private float _ammunationClip;//Pente atual sendo utilizado até ter que puxar mais
 
     public GunElement(string name, float damage, float shootRate, float ammunation, float reloadTime)
     {
@@ -33,56 +34,50 @@ public class GunElement : Element
         _ammunation = ammunation;
         _reloadTime = reloadTime;
     }
-
     public void Initialize()
     {
         _ammunationClip = _clipSize;
     }
-
     public bool UseAmmunation()
     {
+        Debug.Log(_ammunationClip);
         if (_ammunationClip <= 0)
         {
             if (_ammunation > 0)
             {
                 OnReload.Invoke();
             }
+
             return false;
         }
 
         _ammunationClip--;
-        return true;
+        return true;//Retorna true se a bala foi utilizada com sucesso
     }
-
     public void Reload()
     {
         if (_ammunation <= 0)
             return;
-
         float ammunationToReload = _clipSize - _ammunationClip;
-
         if (ammunationToReload <= 0)
             return;
-
         if (_ammunation < ammunationToReload)
         {
             ammunationToReload = _ammunation;
         }
-
         _ammunationClip += ammunationToReload;
         _ammunation -= ammunationToReload;
     }
+    public string Name { get => _name; }
+    public float Damage { get => _damage; }
+    public float ShootRate { get => _shootRate; }
+    public float Ammunation { get => _ammunation; }
+    public float ReloadTime { get => _reloadTime; }
+    public bool HadScope { get => _hadScope; }
+    public GameObject GunModel { get => _gunModel; }
 
-    // --- GETTERS PARA O GUNSYSTEM ACESSAR ---
-    public string Name => _name;
-    public float Damage => _damage;
-    public float ShootRate => _shootRate;
-    public float Ammunation => _ammunation;
-    public float ReloadTime => _reloadTime;
-    public bool HadScope => _hadScope;
-    public GameObject GunModel => _gunModel;
-
-    // Getters de áudio
-    public AudioClip ShootSound => _shootSound;
-    public AudioClip ReloadSound => _reloadSound;
+    // --- ADICIONADO: GETTERS DE ÁUDIO ---
+    public AudioClip ShootSound { get => _shootSound; }
+    public AudioClip ReloadSound { get => _reloadSound; }
+    // ------------------------------------
 }
