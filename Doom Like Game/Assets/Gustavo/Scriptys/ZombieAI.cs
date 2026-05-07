@@ -72,12 +72,17 @@ public class ZombieAI : MonoBehaviour
 
         if (CheckHit())
         {
-            // --- AQUI APLICA O DANO ---
             PlayerHealth ph = player.GetComponent<PlayerHealth>();
-            if (ph != null) ph.TakeDamage(damageDealt);
+            if (ph != null)
+            {
+                ph.TakeDamage(damageDealt);
 
+                // Tocar um som de impacto rápido (OneShot não interrompe a música)
+                // musicSource.PlayOneShot(somDeDano); 
+            }
             yield return new WaitForSeconds(recoverTimeHit);
         }
+
         else
         {
             anim.SetBool("IsStun", true);
