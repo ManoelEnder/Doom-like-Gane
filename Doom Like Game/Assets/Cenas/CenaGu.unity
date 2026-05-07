@@ -1979,12 +1979,12 @@ MonoBehaviour:
         m_Calls: []
     _gunModel: {fileID: 1145553326}
     _name: Pistol
-    _damage: 20
-    _shootRate: 5
+    _damage: 50
+    _shootRate: 30
     _ammunation: 25
     _clipSize: 1
     _reloadTime: 0.1
-    _hadScope: 0
+    _hadScope: 1
     _shootSound: {fileID: 8300000, guid: a1be7afde5c54f44ea376fdba3ab193b, type: 3}
     _reloadSound: {fileID: 0}
 --- !u!114 &138960548
@@ -14385,7 +14385,7 @@ MonoBehaviour:
   enemiesAlive: 0
   maxEnemiesAllowed: 10
   resumeSpawnAt: 5
-  killsToSpawnBoss: 1
+  killsToSpawnBoss: 50
   currentKills: 0
   bossPrefabs:
   - {fileID: 2122697329295013458, guid: f3d52ca6c9143a2409a88e35e0d7f25b, type: 3}
@@ -17466,8 +17466,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
+  m_sharedMaterial: {fileID: -2695080231036261157, guid: 8e5c10ab78ac5ef419b04c5bd5c1da63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17552,14 +17552,14 @@ RectTransform:
   m_GameObject: {fileID: 1514935067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0707853, y: 2.0707853, z: 2.0707853}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1142448534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -681, y: 365}
+  m_AnchoredPosition: {x: -570.5, y: 365}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1516997769
