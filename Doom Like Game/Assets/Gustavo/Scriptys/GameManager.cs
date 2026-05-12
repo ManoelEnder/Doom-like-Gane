@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     void SpawnBoss()
     {
         bossSpawned = true;
-        if (killText != null) killText.text = "DERROTE O BOSS!";
+        if (killText != null) killText.text = "KILL THE BOSS!";
 
         if (bossPrefabs.Length > 0 && bossSpawnPoint != null)
         {
