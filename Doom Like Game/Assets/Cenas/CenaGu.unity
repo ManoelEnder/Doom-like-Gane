@@ -2005,6 +2005,8 @@ MonoBehaviour:
   healthSlider: {fileID: 1307485717}
   gameOverPanel: {fileID: 276833038}
   musicSource: {fileID: 987821578}
+  bloodOverlay: {fileID: 782532888}
+  fadeDuration: 2
 --- !u!1 &140443284
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,6 +5302,8 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   gameOverPanel: {fileID: 0}
   musicSource: {fileID: 0}
+  bloodOverlay: {fileID: 0}
+  fadeDuration: 0.5
 --- !u!1001 &460202533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9348,6 +9352,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5063635143454089840, guid: 39363580fd091364c84dbdea4c047256, type: 3}
   m_PrefabInstance: {fileID: 779400966}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &782532886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782532887}
+  - component: {fileID: 782532889}
+  - component: {fileID: 782532888}
+  m_Layer: 5
+  m_Name: BloodyBord
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &782532887
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782532886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.3677933, y: 3.3677933, z: 3.3677933}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1142448534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 475.39, y: -243.12}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &782532888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782532886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 2100000, guid: 292e2c0caaabe0543b654be5f70d5eb1, type: 2}
+  m_Color: {r: 0.4245283, g: 0.01802242, b: 0.01802242, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &782532889
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782532886}
+  m_CullTransparentMesh: 1
 --- !u!1 &782739737
 GameObject:
   m_ObjectHideFlags: 0
@@ -13888,6 +13967,7 @@ RectTransform:
   - {fileID: 1514935070}
   - {fileID: 276833039}
   - {fileID: 689816663}
+  - {fileID: 782532887}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

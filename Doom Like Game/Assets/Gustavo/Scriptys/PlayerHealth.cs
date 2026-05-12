@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections; // Necessário para a Corrotina
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,10 +11,15 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Interface")]
     [SerializeField] private Slider healthSlider;
-    [SerializeField] private GameObject gameOverPanel; // Arraste um painel de Game Over aqui
+    [SerializeField] private GameObject gameOverPanel;
 
     [Header("Áudio")]
     [SerializeField] private AudioSource musicSource;
+
+    [Header("Efeito de Sangue (Novo)")]
+    [SerializeField] private Image bloodOverlay; // Arraste a imagem de sangue aqui
+    [SerializeField] private float fadeDuration = 0.5f; // Tempo para o sangue sumir
+    private Coroutine bloodCoroutine;
 
     private bool isDead = false;
 
@@ -23,6 +29,14 @@ public class PlayerHealth : MonoBehaviour
         UpdateUI();
 
         if (musicSource == null) musicSource = GetComponent<AudioSource>();
+
+        // Garante que o sangue comece invisível
+        if (bloodOverlay != null)
+        {
+            Color c = bloodOverlay.color;
+            c.a = 0f;
+            bloodOverlay.color = c;
+        }
     }
 
     public void TakeDamage(float amount)
@@ -32,7 +46,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         UpdateUI();
 
-        // Opcional: Tocar som de dor ou efeito de sangue na tela
+        // --- ADICIONADO: DISPARA O EFEITO DE SANGUE ---
+        if (bloodOverlay != null)
+        {
+            if (bloodCoroutine != null) StopCoroutine(bloodCoroutine);
+            bloodCoroutine = StartCoroutine(FadeBlood());
+        }
+
         Debug.Log("Player recebeu dano! Vida atual: " + currentHealth);
 
         if (currentHealth <= 0)
@@ -41,11 +61,28 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    // --- ADICIONADO: CORROTINA DO EFEITO VISUAL ---
+    IEnumerator FadeBlood()
+    {
+        Color c = bloodOverlay.color;
+        c.a = 0.7f; // Intensidade do sangue ao levar dano
+        bloodOverlay.color = c;
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            c.a = Mathf.Lerp(0.7f, 0f, elapsed / fadeDuration);
+            bloodOverlay.color = c;
+            yield return null;
+        }
+    }
+
     void UpdateUI()
     {
         if (healthSlider != null)
         {
-            healthSlider.value = currentHealth/maxHealth;
+            healthSlider.value = currentHealth / maxHealth;
         }
     }
 
@@ -59,16 +96,13 @@ public class PlayerHealth : MonoBehaviour
             musicSource.Stop();
         }
 
-        // Ativa a tela de Game Over
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
         }
 
-        // Para o tempo do jogo
         Time.timeScale = 0f;
 
-        // Libera o mouse para clicar nos botões do menu
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
