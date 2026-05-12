@@ -78,7 +78,7 @@ public class GunSystem : MonoBehaviour
 
         if (!Physics.Raycast(_camera.position, _camera.forward, out RaycastHit target, _handGun.Range))
             return;
-
+        print(target.collider.name);
         if (!target.collider.TryGetComponent(out IShootable shootable))
             return;
 

@@ -29,7 +29,7 @@ public class EnemyStatus : MonoBehaviour, IShootable
     public void Hitted(float damage, Vector3 shootPoint)
 
     {
-
+        print("foi");
         if (isDead) return; // Evita contar a morte múltiplas vezes se levar dois tiros seguidos
 
 
