@@ -1274,7 +1274,7 @@ MonoBehaviour:
         m_Calls: []
     _gunModel: {fileID: 1173449862}
     _name: Pistol
-    _damage: 10
+    _damage: 7
     _shootRate: 0.5
     _ammunation: Infinity
     _clipSize: 1
