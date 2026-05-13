@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   isDead: 0
   _bloodEffect: {fileID: 4057698328083665647, guid: fa5b9097438ebbb44bbd596fe7dd4fbe, type: 3}
-  _lifeMax: 15
+  _lifeMax: 20
 --- !u!65 &7417088449609200280
 BoxCollider:
   m_ObjectHideFlags: 0
