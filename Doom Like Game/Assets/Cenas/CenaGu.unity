@@ -3359,8 +3359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieSpawner
   zombiePrefabs:
-  - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
+  - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   spawnInterval: 10
   maxZombiesFromThisSpawner: 30
 --- !u!135 &250642817
@@ -14338,8 +14338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieSpawner
   zombiePrefabs:
-  - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   - {fileID: 8974665345678178932, guid: 07a6e087715843f4d99e7360dd4e316f, type: 3}
+  - {fileID: 3527194693910954169, guid: e9f2601e2230e07499dbb97fb9564d1b, type: 3}
   spawnInterval: 10
   maxZombiesFromThisSpawner: 30
 --- !u!135 &1164563087
@@ -15195,10 +15195,10 @@ MonoBehaviour:
   killsToSpawnBoss: 20
   currentKills: 0
   bossPrefabs:
+  - {fileID: 1612344682024900187, guid: 482995f546e86fd4dbea501f4152492b, type: 3}
+  - {fileID: 9078462650456505620, guid: 430914e14b944e2478144299cafb88d3, type: 3}
   - {fileID: 2122697329295013458, guid: f3d52ca6c9143a2409a88e35e0d7f25b, type: 3}
   - {fileID: 2284677550587175870, guid: c4e5c1bbf2236e74ea37a2a36971ce3e, type: 3}
-  - {fileID: 9078462650456505620, guid: 430914e14b944e2478144299cafb88d3, type: 3}
-  - {fileID: 1612344682024900187, guid: 482995f546e86fd4dbea501f4152492b, type: 3}
   bossSpawnPoint: {fileID: 1230212289}
 --- !u!4 &1230212289
 Transform:
