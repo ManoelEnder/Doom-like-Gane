@@ -8,4 +8,7 @@ public class TrocaCena : MonoBehaviour
     {
         SceneManager.LoadScene(nomeDaCena);
     }
+
+    Time.scale = 1f;
+
 }
