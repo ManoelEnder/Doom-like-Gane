@@ -1971,7 +1971,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
   _gunInventory:
-    _guns: []
+    _guns:
+    - OnReload:
+        m_PersistentCalls:
+          m_Calls: []
+      _gunModel: {fileID: 753829703684336468, guid: f9b2b74f6990caf4b88c7cd9ed856f84, type: 3}
+      _name: Rifle
+      _damage: 15
+      _shootRate: 0.1
+      _ammunation: Infinity
+      _clipSize: 0
+      _reloadTime: 0
+      _hadScope: 0
+      _range: 50
+      _shootSound: {fileID: 0}
+      _reloadSound: {fileID: 0}
   _handGunModeParent: {fileID: 0}
   _handGun:
     OnReload:
@@ -1985,7 +1999,7 @@ MonoBehaviour:
     _clipSize: 1
     _reloadTime: 0.1
     _hadScope: 1
-    _range: 10
+    _range: 50
     _shootSound: {fileID: 8300000, guid: a1be7afde5c54f44ea376fdba3ab193b, type: 3}
     _reloadSound: {fileID: 0}
 --- !u!114 &138960548
